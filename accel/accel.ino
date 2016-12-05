@@ -1,26 +1,31 @@
 #define x 0
 #define y 1
 #define z 2
+#define greenlight PIN_PD3
+#define accelPIN PIN_PC3
+#define piezoPIN PIN_PC4
 
 void setup()
 {
-  pinMode(PIN_PC3, INPUT);
-  pinMode(PIN_PC4, INPUT);
-  pinMode(PIN_PD3, OUTPUT);
+  pinMode(accelPIN, INPUT);
+  pinMode(piezoPIN, INPUT);
+  pinMode(greenlight, OUTPUT);
   Serial.begin(9600);
 }
 void loop()
 {
-  Serial.print("accelero: ");
-  Serial.println(calAccel(accel(),z));
+  //format accelZ piezo
+//  Serial.print("accelero: ");
+  Serial.print(calAccel(accelRead(),z));
 //  printf("piezo: ");
 //  Serial.println(piezo());
+  Serial.println("0");
 }
-int accel() {
-   return analogRead(PIN_PC3);
+int accelRead() {
+   return analogRead(accelPIN);
 }
-float piezo() {
-  int piezoADC = analogRead(PIN_PC4);
+float piezoRead() {
+  int piezoADC = analogRead(piezoPIN);
   return piezoADC * 5 / 1023.0 ;
 }
 float findmax(float value) {
@@ -43,10 +48,10 @@ float findmax(float value) {
 
 void testboard()
 {
-  digitalWrite(PIN_PD3, LOW);
+  digitalWrite(greenlight, LOW);
   delay(250);
   Serial.print("eieie");
-  digitalWrite(PIN_PD3, HIGH);
+  digitalWrite(greenlight, HIGH);
   delay(250);
 }
 
