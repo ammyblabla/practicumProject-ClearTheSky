@@ -5,6 +5,10 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://jcenter.bintray.com"  }
     }
+
+    dependencies {
+      compile files('core/build/libs/SerialExample.jar )
+    }
 }
 
 allprojects {

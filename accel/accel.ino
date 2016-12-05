@@ -2,12 +2,12 @@
 #define y 1
 #define z 2
 #define greenlight PIN_PD3
-#define accelPIN PIN_PC3
+#define zpin PIN_PC3
 #define piezoPIN PIN_PC4
 
 void setup()
 {
-  pinMode(accelPIN, INPUT);
+  pinMode(zpin, INPUT);
   pinMode(piezoPIN, INPUT);
   pinMode(greenlight, OUTPUT);
   Serial.begin(9600);
@@ -16,13 +16,17 @@ void loop()
 {
   //format accelZ piezo
 //  Serial.print("accelero: ");
-  Serial.print(calAccel(accelRead(),z));
+  Serial.print(accelRead());
+  Serial.print(",");
+  Serial.print(constrain(map(accelRead(),425,357,0,90),0,90));
+  Serial.print(",");
+  Serial.println(calAccel(accelRead(),z));
 //  printf("piezo: ");
 //  Serial.println(piezo());
-  Serial.println(",0");
+//  Serial.println(",0");
 }
 int accelRead() {
-   return analogRead(accelPIN);
+   return analogRead(zpin);
 }
 float piezoRead() {
   int piezoADC = analogRead(piezoPIN);
