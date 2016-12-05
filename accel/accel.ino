@@ -19,7 +19,7 @@ void loop()
   Serial.print(calAccel(accelRead(),z));
 //  printf("piezo: ");
 //  Serial.println(piezo());
-  Serial.println("0");
+  Serial.println(",0");
 }
 int accelRead() {
    return analogRead(accelPIN);
