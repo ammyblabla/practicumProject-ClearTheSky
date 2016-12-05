@@ -2,7 +2,8 @@ import java.io.*;
 import gnu.io.*;
 
 public class SerialExample {
-
+  static double accel;
+  static double piezo;
   public static void main(String[] args) throws Exception
   {
     String dev = "/dev/ttyUSB0";
@@ -29,14 +30,22 @@ public class SerialExample {
         while (true)
         {
           String s = reader.readLine();
-//          String[] fields = s.split(" ");
-//          double value = Double.parseDouble(fields[0]);
-//          System.out.println(value);
+          String[] fields = s.split(",");
+          // System.out.println(fields[0]);
+          accel = Double.parseDouble(fields[0]);
+          piezo = Double.parseDouble(fields[1]);
+          System.out.println(accel + "," + piezo);
 //          System.out.print(" ");
 //          System.out.println(value*2);
-          System.out.println(s);
+          // System.out.println(s);
         }
       }
     }
+  }
+  public double getAccel() {
+    return accel;
+  }
+  public double getPiezo() {
+    return piezo;
   }
 }
