@@ -37,11 +37,8 @@ public class SerialExample {
         reader = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
         in = serialPort.getInputStream();
 
-//        while (true) //move to update
-//        {
         	readBufferLine();
 //        readInputStream();
- //       }
         commPort.close();
       }
     }
@@ -57,26 +54,14 @@ public class SerialExample {
 	}
       String tmp = s;
       split(tmp);
-//      System.out.println(fields[1]);
-//      if(s.length() > 2)
-//      System.out.println(s);
-//      System.out.println(accelString + "," + piezoString);	  
-//      System.out.println(accel + "," + piezo);	  
-
   }
   private static void split(String input){
-	  System.out.println(input);
-//	  input.replaceAll("\\r\\n", "");
-	  //input = "-1,0.00";
+//	  System.out.println(input);
 	  String[] fields = input.split(",|\\ ",-1);
-//	  System.out.println("Length: "+fields.length);
 	  if(fields.length==2){
 	      accelString = fields[0];
 	      piezoString = fields[1];
-//	      System.out.println(fields[1]);
 	  }    
-//    accel = Integer.parseInt(fields[0]);
-//    piezo = Double.parseDouble(fields[1]);
   }
   public static void readInputStream() {
 	int data;
@@ -95,16 +80,14 @@ public class SerialExample {
 	if(isCanParse(accelString)){
 	  accel =   Integer.parseInt(accelString);
   	}
-	System.out.println(accel);
+//	System.out.println(accel);
 	return accel;
-//    return accelString;
   }
   
   public static float getPiezo() {
     if(isCanParse(piezoString))
     	piezo = Float.parseFloat(piezoString);
     return piezo;
-//	  return piezoString;
   }
   
   private static boolean isCanParse(String input) {

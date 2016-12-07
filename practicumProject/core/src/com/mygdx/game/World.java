@@ -80,12 +80,15 @@ public class World {
 		updateAttacked();
 		addTarget(delta);
 		velocity = 125; //prepare for vibration sensor	
-		velocity = SerialExample.getPiezo() * 30;
+		float getPiezo = SerialExample.getPiezo();
+		velocity = getPiezo * 70;
+		if(getPiezo > 0)
+			System.out.println(getPiezo + " " + velocity);
 //		if(Gdx.input.isKeyPressed(Keys.SPACE) & arrowRelease < arrowTime-1) {
 		if(velocity > 0 & arrowRelease < arrowTime-1) {
-
 			arrowRelease = arrowTime;
     		arrow.add(new Arrow(bows.getRotation(), velocity));
+    		velocity = 0;
         }
 	}
 	

@@ -7,8 +7,6 @@ import com.mygdx.game.ClearThisSky;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-//        String libPathProperty = System.getProperty("java.library.path");
-//        System.out.println(libPathProperty);
 		config.title = "Clear this Sky";
 		config.width = ClearThisSky.WIDTH;
         config.height = ClearThisSky.HEIGHT;

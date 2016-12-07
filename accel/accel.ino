@@ -36,7 +36,7 @@ void accelMain() {
 //  Serial.print(",");
     int ans = 0;
     ans  = constrain(map(accelRead(),280,350,0,90),0,90);
-  Serial.print(ans);
+    Serial.print(ans);
   //Serial.print(constrain(map(accelRead(),0,90,0,90),0,90));
 //  Serial.print(",");
 //  Serial.println(calAccel(accelRead(),z));
@@ -50,7 +50,10 @@ void piezoMain() {
 
     float maxx = 0;
     maxx = findmax(piezoRead());
-    Serial.println(String(maxx));
+    if(maxx > 0.1f)
+      Serial.println(String(maxx));
+    else
+      Serial.println("0");
 
 //  }
 //  Serial.println(",0");
