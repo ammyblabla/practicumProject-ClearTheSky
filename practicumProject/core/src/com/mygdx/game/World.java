@@ -79,6 +79,7 @@ public class World {
 		updateTarget();
 		updateAttacked();
 		addTarget(delta);
+		velocity = 125; //prepare for vibration sensor
 		if(Gdx.input.isKeyPressed(Keys.SPACE) & arrowRelease < arrowTime-1) {
 			arrowRelease = arrowTime;
     		arrow.add(new Arrow(bows.getRotation(), velocity));

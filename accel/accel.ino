@@ -2,8 +2,13 @@
 #define y 1
 #define z 2
 #define greenlight PIN_PD3
-#define zpin PIN_PC3
+#define ypin PIN_PC3
+#define zpin PIN_PC5
+#define xpin PIN_PC1
 #define piezoPIN PIN_PC4
+  
+static float max = 0.0;
+static int isPreviousZero = 0;
 
 void setup()
 {
@@ -14,17 +19,37 @@ void setup()
 }
 void loop()
 {
-  //format accelZ piezo
-//  Serial.print("accelero: ");
-  Serial.print(accelRead());
+//  testboard();
+  accelMain();
   Serial.print(",");
-  Serial.print(constrain(map(accelRead(),425,357,0,90),0,90));
-  Serial.print(",");
-  Serial.println(calAccel(accelRead(),z));
-//  printf("piezo: ");
-//  Serial.println(piezo());
+  piezoMain();
+
+}
+
+void accelMain() {
+//  Serial.print(accelRead());
+//  Serial.print(",");
+    int ans = 0;
+    ans  = constrain(map(accelRead(),280,350,0,90),0,90);
+  Serial.print(ans);
+  //Serial.print(constrain(map(accelRead(),0,90,0,90),0,90));
+//  Serial.print(",");
+//  Serial.println(calAccel(accelRead(),z));
+}
+
+void piezoMain() {
+  //  if(findmax(piezoRead()) == 0.00f){
+//    Serial.print("raw: ");
+//    Serial.println(piezoRead());
+//    Serial.print("max ");
+    float maxx = 0;
+    maxx = findmax(piezoRead());
+    Serial.println(maxx);
+
+//  }
 //  Serial.println(",0");
 }
+
 int accelRead() {
    return analogRead(zpin);
 }
@@ -33,8 +58,8 @@ float piezoRead() {
   return piezoADC * 5 / 1023.0 ;
 }
 float findmax(float value) {
-  static float max = 0.0;
-  static int isPreviousZero = 0;
+//  Serial.print("findmax: ");
+//  Serial.println(max);
 
   if(value > max){
     max = value;
@@ -44,7 +69,7 @@ float findmax(float value) {
   {
     isPreviousZero = 0;
     float tmp = max;
-    max = 0;
+    max = 0.0;
     return tmp;
   }
   return 0.0;
@@ -53,10 +78,10 @@ float findmax(float value) {
 void testboard()
 {
   digitalWrite(greenlight, LOW);
-  delay(250);
+  delay(100);
   Serial.print("eieie");
   digitalWrite(greenlight, HIGH);
-  delay(250);
+  delay(100);
 }
 
 float calAccel(int value, int axis)

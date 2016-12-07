@@ -6,7 +6,7 @@ public class SerialExample {
   static double piezo;
   public static void main(String[] args) throws Exception
   {
-    String dev = "/dev/ttyUSB0";
+    String dev = "/dev/ttyUSB2";
 
     CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(dev);
     if (portIdentifier.isCurrentlyOwned())
@@ -30,14 +30,14 @@ public class SerialExample {
         while (true)
         {
           String s = reader.readLine();
-          String[] fields = s.split(",");
+          // String[] fields = s.split(",");
           // System.out.println(fields[0]);
-          accel = Double.parseDouble(fields[0]);
-          piezo = Double.parseDouble(fields[1]);
-          System.out.println(accel + "," + piezo);
-//          System.out.print(" ");
-//          System.out.println(value*2);
-          // System.out.println(s);
+          //
+          // accel = Double.parseDouble(fields[0]);
+          // piezo = Double.parseDouble(fields[1]);
+          // System.out.println(accel + "," + piezo);
+
+          System.out.println(s);
         }
       }
     }
