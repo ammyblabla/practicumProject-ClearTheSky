@@ -20,6 +20,7 @@ public class GameScreen extends ScreenAdapter {
         
         world = new World(clearThisSky);
         worldRenderer = new WorldRenderer(clearThisSky, world);
+        
     }
     
     @Override
@@ -30,6 +31,12 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // Fills the screen with the selected color
       
         worldRenderer.render(delta);
+        try {
+			SerialExample.setup();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public boolean gameEnd() {

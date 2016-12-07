@@ -21,12 +21,8 @@ public class Bows {
 	}
 	
 	public void setRotation() {
-		if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)  && rotation>0){
-    		rotation -= 10;
-    	}
-		else if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT) && rotation<90){
-    		rotation += 10;
-    	}
+//		System.out.println("Bows: "+SerialExample.getAccel());
+		rotation = SerialExample.getAccel();
 	}
 	public Texture getBowImg() {
 		return bowImg;

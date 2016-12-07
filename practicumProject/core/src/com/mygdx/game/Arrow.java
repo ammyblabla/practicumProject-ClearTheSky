@@ -17,9 +17,9 @@ public class Arrow {
 	private float x;
 	private float y;
 	 
-    public Arrow(int rotation, float u) {
+    public Arrow(int rotation, float velocity) {
     	this.rotation = rotation;
-    	v = u;
+    	v = velocity;
     	g = 9.81f;
     	x = (float) (160*Math.cos(Math.toRadians(rotation)));
     	y = (float) (160*Math.sin(Math.toRadians(rotation)));

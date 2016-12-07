@@ -26,7 +26,7 @@ public class World {
 	private TimerTask mainTask;
 	private TimerTask arrowTask;
 	
-	private int velocity; //for vibration sensor
+	private float velocity; //for vibration sensor
 	private int score;
 	private int time;
     private int arrowTime;
@@ -79,8 +79,11 @@ public class World {
 		updateTarget();
 		updateAttacked();
 		addTarget(delta);
-		velocity = 125; //prepare for vibration sensor
-		if(Gdx.input.isKeyPressed(Keys.SPACE) & arrowRelease < arrowTime-1) {
+		velocity = 125; //prepare for vibration sensor	
+		velocity = SerialExample.getPiezo() * 30;
+//		if(Gdx.input.isKeyPressed(Keys.SPACE) & arrowRelease < arrowTime-1) {
+		if(velocity > 0 & arrowRelease < arrowTime-1) {
+
 			arrowRelease = arrowTime;
     		arrow.add(new Arrow(bows.getRotation(), velocity));
         }
@@ -99,8 +102,8 @@ public class World {
 			}
 			LastTarget = 0;
 		}
-		System.out.println(LastTarget);
-		System.out.println(delta);
+//		System.out.println(LastTarget);
+//		System.out.println(delta);
 	}
 	
 	public void updateArrow() {

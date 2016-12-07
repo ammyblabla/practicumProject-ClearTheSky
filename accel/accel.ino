@@ -23,6 +23,7 @@ void loop()
   accelMain();
   Serial.print(",");
   piezoMain();
+  delay(25);
 
 }
 
@@ -49,7 +50,7 @@ void piezoMain() {
 
     float maxx = 0;
     maxx = findmax(piezoRead());
-    Serial.println(maxx);
+    Serial.println(String(maxx));
 
 //  }
 //  Serial.println(",0");
