@@ -6,7 +6,7 @@ import gnu.io.*;
 public class SerialTest {
 	  public static void main(String[] args) throws Exception
 	    {
-	        String dev = "/dev/ttyUSB2";
+	        String dev = "/dev/ttyUSB1";
 	 
 	        System.out.println("Monitoring serial stream on " + dev);
 	        CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(dev);

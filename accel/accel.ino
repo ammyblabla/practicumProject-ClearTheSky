@@ -26,6 +26,10 @@ void loop()
 
 }
 
+void testPiezo() {
+  Serial.println(piezoRead());   
+}
+
 void accelMain() {
 //  Serial.print(accelRead());
 //  Serial.print(",");
@@ -40,8 +44,9 @@ void accelMain() {
 void piezoMain() {
   //  if(findmax(piezoRead()) == 0.00f){
 //    Serial.print("raw: ");
-//    Serial.println(piezoRead());
+
 //    Serial.print("max ");
+
     float maxx = 0;
     maxx = findmax(piezoRead());
     Serial.println(maxx);
@@ -55,6 +60,7 @@ int accelRead() {
 }
 float piezoRead() {
   int piezoADC = analogRead(piezoPIN);
+//  return analogRead(piezoPIN);
   return piezoADC * 5 / 1023.0 ;
 }
 float findmax(float value) {
@@ -79,7 +85,7 @@ void testboard()
 {
   digitalWrite(greenlight, LOW);
   delay(100);
-  Serial.print("eieie");
+  Serial.println("eiei");
   digitalWrite(greenlight, HIGH);
   delay(100);
 }
