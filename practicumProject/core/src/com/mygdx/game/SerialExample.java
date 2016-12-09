@@ -2,8 +2,10 @@ package com.mygdx.game;
 
 import java.io.*;
 import gnu.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class SerialExample {
+public class SerialExample implements Runnable{
   private static int accel = 0;
   private static float piezo = 0;
   private static String s = "";
@@ -36,10 +38,10 @@ public class SerialExample {
 
         reader = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
         in = serialPort.getInputStream();
-
+        while(true){
         	readBufferLine();
 //        readInputStream();
-        commPort.close();
+        }
       }
     }
   }
@@ -97,6 +99,7 @@ public class SerialExample {
 	  for(int i=0; i<delimiters.length; i++){
 		for(int j=0; j<input.length(); j++){
 			if(delimiters[i].charAt(0) == input.charAt(j)){
+//				  System.out.println(input.length());
 				for(int k=1; k<delimiters.length; k++)
 				{
 					if(delimiters[i].charAt(k) != input.charAt(j)){
@@ -113,4 +116,13 @@ public class SerialExample {
 	  }
 	  return true;
   }
+	@Override
+	public void run() {
+		try {
+	        setup();
+	    } catch (Exception ex) {
+	        Logger.getLogger(SerialExample.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+		
+	}
 }
